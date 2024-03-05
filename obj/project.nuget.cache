@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "7KDZzJjXOxf0w91tFcCNB/oZGTeE+ZsTlwif8k0tLaXaaeqd1afUYrOLvBuOUiQD27TaU8L9tHqKalB/17BAMw==",
+  "success": true,
+  "projectFilePath": "Q:\\Docs Inteligencia Corporativa\\3. Uso interno\\1. Pessoal\\Matheus André\\Estudo\\csharp\\testeSerialVSC\\testeSerialVSC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.linux-arm.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.linux-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.linux-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.linux-x64.runtime.native.system.io.ports\\8.0.0\\runtime.linux-x64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.native.system.io.ports\\8.0.0\\runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.osx-arm64.runtime.native.system.io.ports\\8.0.0\\runtime.osx-arm64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\runtime.osx-x64.runtime.native.system.io.ports\\8.0.0\\runtime.osx-x64.runtime.native.system.io.ports.8.0.0.nupkg.sha512",
+    "C:\\Users\\masilva\\.nuget\\packages\\system.io.ports\\8.0.0\\system.io.ports.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
