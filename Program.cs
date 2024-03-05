@@ -11,13 +11,20 @@ class Program
         Console.Clear();
 
         string? op = "1";
-//                                           PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
-        byte[] bufferIosZones = new byte[10]{0x01,   0x01,  0x01,  0x03,  0x01,  0x02,  0x02,  0x04,  0x04,  0x02};
 
-        //00000101020203030404
+//                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
+        byte[] iosModes = new byte[10]{0x03,   0x00,  0x03,  0x03,  0x02,  0x01,  0x00,  0x00,  0x01,  0x03};
 
-        byte crcHigh = CRC16.CalcAndGetHigh(bufferIosZones);
-        byte crcLow = CRC16.CalcAndGetLow(bufferIosZones);
+//                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
+        byte[] iosZones = new byte[10]{0x02,   0x04,  0x01,  0x00,  0x02,  0x03,  0x01,  0x04,  0x02,  0x01};
+
+        //O buffer com os modos e as zonas dos IOs.
+        byte[] bufferIoConfig = new byte[20];
+        iosModes.CopyTo(bufferIoConfig, 0);
+        iosZones.CopyTo(bufferIoConfig, 10);
+
+        byte crcHigh = CRC16.CalcAndGetHigh(bufferIoConfig);
+        byte crcLow = CRC16.CalcAndGetLow(bufferIoConfig);
 
         SerialPort serial = new SerialPort("COM1", 115200);
 
@@ -28,12 +35,12 @@ class Program
             Console.WriteLine("Conexão com o dispositivo feita com sucesso.\n");
 
             //Copiando informações do array de zonas dos IOS para o buffer a ser escrito na serial.
-            byte[] buffer = new byte[12];
+            byte[] buffer = new byte[22];
 
             //Incluindo o CRC nos dois últimos bytes do buffer.
-            bufferIosZones.CopyTo(buffer, 0);
-            buffer[10] = crcHigh;
-            buffer[11] = crcLow;
+            bufferIoConfig.CopyTo(buffer, 0);
+            buffer[20] = crcHigh;
+            buffer[21] = crcLow;
 
             while (true)
             {
