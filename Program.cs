@@ -13,10 +13,10 @@ class Program
         string? op = "1";
 
 //                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
-        byte[] iosModes = new byte[10]{0x03,   0x00,  0x03,  0x03,  0x02,  0x01,  0x00,  0x00,  0x01,  0x03};
+        byte[] iosModes = new byte[10]{0x00,   0x01,  0x01,  0x02,  0x02,  0x01,  0x00,  0x02,  0x02,  0x01};
 
 //                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
-        byte[] iosZones = new byte[10]{0x02,   0x04,  0x01,  0x00,  0x02,  0x03,  0x01,  0x04,  0x02,  0x01};
+        byte[] iosZones = new byte[10]{0x01,   0x00,  0x04,  0x03,  0x01,  0x02,  0x01,  0x04,  0x01,  0x03};
 
         //O buffer com os modos e as zonas dos IOs.
         byte[] bufferIoConfig = new byte[20];
