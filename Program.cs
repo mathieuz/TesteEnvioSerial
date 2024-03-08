@@ -13,15 +13,19 @@ class Program
         string? op = "1";
 
 //                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
-        byte[] iosModes = new byte[10]{0x00,   0x01,  0x01,  0x02,  0x02,  0x01,  0x00,  0x02,  0x02,  0x01};
+        byte[] iosModes = new byte[10]{0x01,   0x00,  0x02,  0x01,  0x03,  0x03,  0x02,  0x00,  0x00,  0x01};
 
 //                                     PA15    PA1    PA8    PA9    PA0    PB5    PB4    PB3    PA2    PB12
-        byte[] iosZones = new byte[10]{0x01,   0x00,  0x04,  0x03,  0x01,  0x02,  0x01,  0x04,  0x01,  0x03};
+        byte[] iosZones = new byte[10]{0x03,   0x04,  0x03,  0x01,  0x03,  0x04,  0x01,  0x02,  0x03,  0x00};
 
-        //O buffer com os modos e as zonas dos IOs.
-        byte[] bufferIoConfig = new byte[20];
+//                                      Timer0      Timer1      Timer2      Timer3      Timer4
+        byte[] iosTimers = new byte[10]{0x13, 0xD6, 0x4F, 0xA3, 0x12, 0x8E, 0xBC, 0xDF, 0x10, 0x43};
+
+        //O buffer com os modos, as zonas e os timers de zonas dos IOs.
+        byte[] bufferIoConfig = new byte[30];
         iosModes.CopyTo(bufferIoConfig, 0);
         iosZones.CopyTo(bufferIoConfig, 10);
+        iosTimers.CopyTo(bufferIoConfig, 20);
 
         byte crcHigh = CRC16.CalcAndGetHigh(bufferIoConfig);
         byte crcLow = CRC16.CalcAndGetLow(bufferIoConfig);
@@ -35,12 +39,12 @@ class Program
             Console.WriteLine("Conexão com o dispositivo feita com sucesso.\n");
 
             //Copiando informações do array de zonas dos IOS para o buffer a ser escrito na serial.
-            byte[] buffer = new byte[22];
+            byte[] buffer = new byte[32];
+            bufferIoConfig.CopyTo(buffer, 0);
 
             //Incluindo o CRC nos dois últimos bytes do buffer.
-            bufferIoConfig.CopyTo(buffer, 0);
-            buffer[20] = crcHigh;
-            buffer[21] = crcLow;
+            buffer[30] = crcHigh;
+            buffer[31] = crcLow;
 
             while (true)
             {
